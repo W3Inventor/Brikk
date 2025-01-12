@@ -1,0 +1,18 @@
+/*
+ * variables
+ *
+ */
+$gl-colCount: 12 !default;
+$gl-gridName: 'brk-grid' !default;
+$gl-colName: 'brk-col' !default;
+$gl-attributeName: class !default;
+$gl-gutter: 1.5rem !default; // total left + right
+$gl-gutter-mobile: 1rem !default; // total left + right
+$gl-gutter-vertical: 1rem !default;
+$gl-mq-width: 'max-width' !default;
+$gl-mq-list: (
+    xl: ( 1200 - 0.02 ) * 1px,
+    lg: ( 992 - 0.02 ) * 1px,
+    md: ( 768 - 0.02 ) * 1px,
+    sm: ( 576 - 0.02 ) * 1px
+) !default;

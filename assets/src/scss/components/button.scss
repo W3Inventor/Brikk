@@ -1,0 +1,89 @@
+@charset 'UTF-8';
+
+/*
+ * button
+ *
+ */
+.rz-button,
+.brk-bg {
+    @include relative;
+    background-color: var( --minor );
+    overflow: hidden;
+    z-index: 0;
+
+    &.rz-button-accent {
+        background-color: var( --main );
+        color: #fff;
+    }
+
+    // over
+    &:before {
+        --size: 0;
+        content: '';
+        @include absolute;
+        top: var( --y );
+        left: var( --x );
+        width: var( --size );
+        height: var( --size );
+        background: radial-gradient( circle closest-side, var( --cursor-shade ), transparent );
+        transform: translate( -50%, -50% );
+        transition: width 0.2s ease, height 0.2s ease;
+        opacity: .65;
+    }
+
+    // shade
+    &:after {
+        content: '';
+        @include absolute( top 0 right 0 left 0 bottom 0 );
+        @include transition( all .3s );
+        background: linear-gradient( 90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.25) 100% );
+        z-index: 1;
+    }
+
+    &.rz-button-accent {
+        &:after {
+            background: linear-gradient( 90deg, rgba(255,255,255,0) 0%, var( --main-shade ) 100% );
+        }
+    }
+
+    &.rz--border {
+        background: transparent;
+        box-shadow: rgba(125,125,125,.4) 0px 0px 0px 1px inset;
+        color: inherit;
+
+        .rz-preloader {
+            color: inherit;
+        }
+
+        &.rz--white {
+            box-shadow: rgba(255, 255, 255, 0.3) 0px 0px 0px 1px inset;
+            color: #fff;
+        }
+
+        &:before {
+            opacity: .5;
+        }
+
+        &:after {
+            content: none;
+        }
+    }
+
+    span,
+    i,
+    em {
+        @include relative;
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    &:hover {
+        &:after {
+            opacity: 0;
+        }
+
+        &:before {
+            --size: 175px;
+        }
+    }
+}

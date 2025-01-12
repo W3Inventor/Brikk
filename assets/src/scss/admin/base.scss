@@ -1,0 +1,17 @@
+@charset 'UTF-8';
+
+/*
+ * apply styles for admin area
+ *
+ */
+
+// tgm
+.brk-db-notice {
+    padding: 1.4em;
+    margin: 25px 0 15px;
+
+    .brk-db-settings-error-heading {
+        font-size: 1.4em;
+        color: #dc3232;
+    }
+}

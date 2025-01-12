@@ -1,0 +1,388 @@
+@charset 'UTF-8';
+
+// subscribe form
+.brk-subscribe {
+    .brk--name {
+        display: block;
+        max-width: 565px;
+        font-size: 37px;
+        line-height: 130%;
+        font-family: var( --font-heading );
+        font-weight: 700;
+        margin: 0 auto 2.5rem auto;
+
+        @include media( md ) {
+            font-size: 30px;
+        }
+
+        @include media( sm ) {
+            font-size: 24px;
+        }
+    }
+
+    .brk-input {
+        @include relative;
+        color: #111;
+
+        > i {
+            @include absolute( top 0 left 0 bottom 0 );
+            width: 58px;
+            line-height: 58px;
+            text-align: center;
+
+            @include media( sm ) {
+                width: 48px;
+                line-height: 48px;
+            }
+        }
+
+        input {
+            width: 100%;
+            height: 58px;
+            line-height: 58px;
+            padding: 0 55px;
+            border: 0;
+            background-color: #fff;
+            box-shadow: 0 22px 50px 0px rgba(0,0,0,.05);
+            border-radius: 50px;
+            color: #000;
+            text-align: left;
+            font-style: italic;
+
+            @include media( sm ) {
+                height: 48px;
+                line-height: 48px;
+            }
+        }
+
+        button {
+            @include absolute( top 0 right 0 bottom 0 );
+            @include transition( all .3s );
+            width: 58px;
+            line-height: 58px;
+            border: 0;
+            background-color: transparent;
+            text-align: center;
+            cursor: pointer;
+
+            &:hover {
+                opacity: .5;
+            }
+
+            @include media( sm ) {
+                width: 48px;
+                line-height: 48px;
+            }
+        }
+    }
+
+    .brk-summary {
+        display: block;
+        max-width: 650px;
+        margin: 1.5rem auto 0 auto;
+        font-size: 14px;
+        color: #999;
+        font-style: italic;
+        font-weight: 400;
+    }
+}
+
+.mc4wp-form {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.mc4wp-response {
+    margin-top: 1.5rem;
+
+    .mc4wp-error {
+        max-width: 500px;
+        margin: 0 auto;
+
+        p {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: #e45065;
+            line-height: 180%;
+            color: #fff;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+    }
+
+    .mc4wp-success {
+        max-width: 500px;
+        margin: 0 auto;
+
+        p {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: #58dc4e;
+            line-height: 180%;
+            color: #fff;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+    }
+}
+
+.brk-footer {
+    @include relative;
+    margin-top: 4rem;
+    background-color: #fff;
+    color: #111;
+
+    .elementor-page & {
+        margin-top: 0;
+    }
+
+    @include media( md ) {
+        margin-top: 2rem;
+    }
+
+    .rz-is-explore & {
+        display: none;
+    }
+
+    .brk--top {
+        padding: 3rem 0;
+        background-color: #f5f5f5;
+
+        .brk--widgets {
+            .brk-widget {
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    .brk--content {
+        padding: 3rem 0;
+
+        @include media( sm ) {
+            padding: 1.5rem 0;
+        }
+
+        &[data-cols='3'] {
+            .brk-widget {
+                flex: 0 1 33.3334%;
+                min-width: 33.3334%;
+            }
+        }
+
+        &[data-cols='4'] {
+            .brk-widget {
+                flex: 0 1 25%;
+                min-width: 25%;
+            }
+        }
+
+        &[data-cols='5'] {
+            .brk-widget {
+                flex: 0 1 20%;
+                min-width: 20%;
+            }
+        }
+
+        &[data-cols='6'] {
+            .brk-widget {
+                flex: 0 1 16.6667%;
+                min-width: 16.6667%;
+            }
+        }
+
+        .brk--widgets {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 ( -$gutter ) -1.5rem ( -$gutter );
+
+            .brk-widget {
+                padding: 0 $gutter;
+
+                @include media( sm ) {
+                    flex: 0 1 100%;
+                    border-bottom: 1px solid var( --border );
+                    padding-bottom: 1.5rem;
+
+                    &:last-child {
+                        border-bottom: 0;
+                        padding-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        .brk--name {
+            display: block;
+            margin: 0;
+            font-size: 33px;
+            line-height: 100%;
+            font-weight: 800;
+
+            @include media( md ) {
+                font-size: 30px;
+            }
+        }
+
+        .brk--summary {
+            margin-top: 2rem;
+
+            @include media( md ) {
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 3rem;
+            }
+
+            @include media( sm ) {
+                margin-bottom: 1.5rem;
+            }
+        }
+    }
+
+    .brk--bottom {
+        background-color: #f5f5f5;
+        padding: 1rem 0;
+
+        @include media( md ) {
+            padding: 1.5rem 0;
+        }
+
+        .brk--bottom-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+
+            @include media( md ) {
+                justify-content: center;
+                text-align: center;
+
+                .brk--cell-copy,
+                .brk--cell-icons {
+                    flex: 0 1 100%;
+                }
+            }
+
+            .brk--cell-copy {
+                p {
+                    margin: 0;
+                    font-size: 14px;
+
+                    @include media( md ) {
+                        margin-bottom: .5rem;
+                    }
+                }
+
+                a {
+                    color: inherit;
+                    font-weight: 700;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    .brk--widgets {
+        .brk-widget {
+            .widget-title {
+                margin-bottom: 1rem;
+                font-size: 15px;
+                line-height: 100%;
+                font-weight: 600;
+            }
+
+            ul {
+                margin: 0;
+                list-style: none;
+
+                li {
+                    padding: 6px 0;
+                    border: 0;
+
+                    a {
+                        display: block;
+                        line-height: 150%;
+                        // color: #000;
+                        text-decoration: none;
+                        font-weight: 400;
+
+                        @include media( hover ) {
+                            &:hover {
+                                // color: var( --main );
+                            }
+                        }
+                    }
+                }
+            }
+
+            .menu {
+                li {
+                    padding: 3px 0;
+
+                    a {
+                        padding: 0;
+                        border: 0;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+
+    .brk-nav-bottom {
+        overflow: hidden;
+        font-size: 14px;
+
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 0 -5px;
+
+            li {
+                display: flex;
+                align-items: center;
+                margin: 0 5px;
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    height: 100%;
+                    padding: 0;
+                    // color: var( --name );
+                    font-weight: 400;
+                    text-decoration: none;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
+
+/*
+ * invert
+ *
+ */
+.brk-invert-footer {
+
+    .brk-footer {
+        --border: #333;
+        
+        background-color: #151515;
+        color: #fff;
+
+        a {
+            color: #fff;
+        }
+
+        .brk--top {
+            background-color: #000;
+        }
+
+        .brk--bottom {
+            background-color: #000;
+        }
+    }
+}

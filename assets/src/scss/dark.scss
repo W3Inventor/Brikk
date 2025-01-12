@@ -1,0 +1,86 @@
+@charset 'UTF-8';
+
+/* configuration */
+@import
+    'utils/mixins';
+
+/*
+ * dark mode styles
+ *
+ */
+
+// header
+.brk-dark-header {
+
+    // header
+    .brk-header {
+        background-color: #000;
+        color: #fff;
+
+        .brk--pad {
+            > i {
+                background-color: #222;
+                color: #fff;
+            }
+        }
+
+        // logo
+        .brk-site-logo img {
+            opacity: 0 !important;
+        }
+
+        .brk-logo-overlap img {
+            opacity: 1!important;
+        }
+    }
+
+    &.brk-is-sticky {
+        .brk-header {
+            background-color: rgba(0,0,0,0.8);
+            color: #fff;
+        }
+    }
+
+    &.brk-overlap-header {
+        .brk-header {
+            background-color: transparent;
+        }
+
+        &.brk-is-sticky {
+            .brk-header {
+                background-color: rgba(0,0,0,0.8);
+            }
+        }
+    }
+
+    // nav
+    .brk-nav {
+        ul {
+            .sub-menu {
+                background-color: #333;
+
+                li {
+                    a {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+
+    // account nav
+    .brk-account-nav {
+        ul {
+            background-color: #222;
+            border: 0;
+        }
+
+        a {
+            color: #fff;
+
+            span {
+                background: linear-gradient(90deg, var( --main ) 0%, var( --main-shade ) 100%);
+            }
+        }
+    }
+}

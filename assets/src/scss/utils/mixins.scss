@@ -1,0 +1,277 @@
+@charset 'UTF-8';
+
+/*
+ * mixins
+ *
+ */
+@function translate-media-condition($c) {
+    $condMap: (
+
+        'screen': 'only screen',
+        'print': 'only print',
+        'hg': '( max-width: 1709.98px )',
+        'xl': '( max-width: 1299.98px )',
+        'gt-xl': '( min-width: 1300px )',
+        'lg': '( max-width: 1199.98px )',
+        'gt-lg': '( min-width: 1200px )',
+        'md': '( max-width: 991.98px )',
+        'gt-md': '( min-width: 992px )',
+        'sm': '( max-width: 767.98px )',
+        'gt-sm': '( min-width: 768px )',
+        'xs': '( max-width: 575.98px )',
+        'gt-xs': '( min-width: 576px )',
+        'hover': '(min-width: 1025px)',
+
+        'admin-bar-md': '(max-width: 782px)',
+        'admin-bar-sm': '(max-width: 600px)',
+
+    );
+    @return map-get( $condMap, $c );
+}
+
+@mixin on-event($self: false) {
+    @if $self {
+        &,
+        &:hover,
+        &:active,
+        &:focus {
+            @content;
+        }
+    } @else {
+        &:hover,
+        &:active,
+        &:focus {
+            @content;
+        }
+    }
+}
+
+@mixin when-inside($context) {
+    #{$context} & {
+        @content;
+    }
+}
+
+@mixin size($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin position($position, $args: ()) {
+    $offsets: top right bottom left;
+    position: $position;
+
+    @each $offset in $offsets {
+        $index: index($args, $offset);
+        @if $index {
+            @if $index == length($args) {
+                #{$offset}: 0;
+            }
+            @else {
+                $next: nth($args, $index + 1);
+                @if is-valid-length($next) {
+                    #{$offset}: $next;
+                }
+                @else if index($offsets, $next) {
+                    #{$offset}: 0;
+                }
+                @else {
+                    @warn "Invalid value `#{$next}` for offset `#{$offset}`.";
+                }
+            }
+        }
+    }
+}
+
+@mixin m-auto {
+    margin: {
+        left: auto;
+        right: auto;
+    }
+}
+
+@mixin ml-auto {
+    margin: {
+        left: auto;
+    }
+}
+@mixin mr-auto {
+    margin: {
+        right: auto;
+    }
+}
+
+@mixin pseudo($pos: absolute, $display: block, $content: ''){
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+
+@mixin truncate($truncation-boundary) {
+    max-width: $truncation-boundary;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin placeholder {
+    &.placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+}
+
+@function is-valid-length($value) {
+    @return (type-of($value) == "number" and not unitless($value))
+        or (index(auto initial inherit 0, $value) != false);
+}
+
+@mixin absolute($args: ()) {
+    @include position(absolute, $args);
+}
+
+@mixin fixed($args: ()) {
+    @include position(fixed, $args);
+}
+
+@mixin relative($args: ()) {
+    @include position(relative, $args);
+}
+
+@mixin prefix($property, $value, $vendors: webkit moz ms o) {
+    @if $vendors {
+        @each $vendor in $vendors {
+            #{"-" + $vendor + "-" + $property}: #{$value};
+        }
+    }
+    #{$property}: #{$value};
+}
+
+/*
+ * animation mixins
+ *
+ */
+@mixin transition($args) {
+    -webkit-transition: $args;
+    transition: $args;
+}
+
+@mixin rotate($args){
+    -webkit-transform: rotate($args);
+    -ms-transform: rotate($args);
+    transform: rotate($args);
+}
+
+@mixin scale($args){
+    -webkit-transform: scale($args);
+    -ms-transform: scale($args);
+    transform: scale($args);
+}
+
+@mixin transform($top, $left){
+    -webkit-transform: translate($top, $left);
+    -ms-transform: translate($top, $left);
+    transform: translate($top, $left);
+}
+
+@mixin transformY($args){
+    -webkit-transform: translateY($args);
+    -ms-transform: translateY($args);
+    transform: translateY($args);
+}
+
+@mixin transformX($args){
+    -webkit-transform: translateX($args);
+    -ms-transform: translateX($args);
+    transform: translateX($args);
+}
+
+@mixin transformXD($x,$y,$z){
+    -webkit-transform: translate3d($x,$y,$z);
+    -ms-transform: translate3d($x,$y,$z);
+    transform: translate3d($x,$y,$z);
+}
+
+@mixin transformXY($x,$y){
+    -webkit-transform: translate($x,$y);
+    -ms-transform: translate($x,$y);
+    transform: translate($x,$y);
+}
+
+@mixin transformRXY($r,$x,$y){
+    -webkit-transform: rotate($r) translateX($x) translateY($y);
+    -ms-transform: rotate($r) translateX($x) translateY($y);
+    transform: rotate($r) translateX($x) translateY($y);
+}
+
+@mixin delay($args){
+    -webkit-transition-delay: $args;
+    -o-transition-delay: $args;
+    transition-delay: $args;
+}
+
+@mixin appearance($args) {
+	-webkit-appearance: $args;
+	   -moz-appearance: $args;
+	        appearance: $args;
+}
+
+@mixin backgroundImage($imgpath,$position:0 0,$repeat: no-repeat) {
+    background: {
+        image: url($imgpath);
+        position: $position;
+        repeat: $repeat;
+    }
+}
+
+@mixin keyframe($animation_name) {
+    @-webkit-keyframes $animation_name {
+        @content;
+    }
+
+    @-moz-keyframes $animation_name {
+        @content;
+    }
+
+    @-o-keyframes $animation_name {
+        @content;
+    }
+
+    @keyframes $animation_name {
+        @content;
+    }
+}
+
+@mixin animation($delay, $duration, $animation, $count) {
+    -webkit-animation-delay: $delay;
+    -webkit-animation-duration: $duration;
+    -webkit-animation-name: $animation;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-iteration-count: $count;
+    -webkit-animation-iteration-count: $count;
+
+    -moz-animation-delay: $delay;
+    -moz-animation-duration: $duration;
+    -moz-animation-name: $animation;
+    -moz-animation-fill-mode: forwards;
+    -moz-animation-iteration-count: $count;
+
+    animation-delay: $delay;
+    animation-duration: $duration;
+    animation-name: $animation;
+    animation-fill-mode: forwards;
+    animation-iteration-count: $count;
+}
+
+@mixin media($args) {
+    $query: "";
+    @each $arg in $args {
+        $op: "";
+        @if ( $query != "" ) {
+            $op: " and ";
+        }
+        $query: $query + $op + translate-media-condition($arg);
+    }
+    @media #{$query}    { @content; }
+}

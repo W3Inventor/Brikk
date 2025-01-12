@@ -1,0 +1,28 @@
+@charset 'UTF-8';
+
+/*
+ * gutter
+ *
+ */
+$gutter: .75rem;
+$gutter-mobile: .5rem;
+
+/*
+ * colors
+ *
+ */
+$color-accent: #e45065;
+
+/*
+ * error
+ *
+ */
+$color-error-background: #f9f1f1;
+$color-error-text: #da4081;
+
+/*
+ * units
+ *
+ */
+$max-width: 1140px !default;
+$max-width-wide: 1600px !default;

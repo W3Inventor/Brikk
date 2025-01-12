@@ -1,0 +1,52 @@
+@charset 'UTF-8';
+
+/*
+ * typography
+ *
+ */
+body {
+    font-family: var( --font-body );
+    font-size: 15px;
+    line-height: 1.5;
+    color: #111;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var( --font-heading );
+    line-height: 150%;
+    margin: 0 0 0.7rem 0;
+    font-weight: 700;
+}
+
+h1 { font-size: 3.25rem; }
+h2 { font-size: 2.75rem; }
+h3 { font-size: 2.25rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.75rem; }
+
+@include media( md ) {
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+    h4 { font-size: 1rem; }
+    h5 { font-size: 0.75rem; }
+    h6 { font-size: 0.5rem; }
+}
+
+p {
+    margin: 0 0 1.5rem 0;
+}
+
+a {
+    color: var( --main );
+}
+
+.brk-font-heading {
+    font-family: var( --font-heading );
+}

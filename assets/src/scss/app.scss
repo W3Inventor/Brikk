@@ -1,0 +1,28 @@
+@charset 'UTF-8';
+
+/* configuration */
+@import
+    'utils/vars',
+    'utils/variables',
+    'utils/mixins';
+
+/* base stuff and helpers */
+@import
+    'base/wp.scss',
+    'base/typography.scss',
+    'base/helpers.scss',
+    'base/animations.scss',
+    'base/woocommerce.scss',
+    'base/base.scss',
+    'base/mobile.scss';
+
+/* layout-related sections */
+@import
+    'layout/header.scss',
+    'layout/footer.scss';
+
+/* components */
+@import
+    'components/button.scss',
+    'components/preloader.scss',
+    'components/grid/grid.scss';
